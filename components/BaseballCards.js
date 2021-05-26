@@ -3,7 +3,6 @@ import gql from 'graphql-tag';
 import styled from 'styled-components';
 import { perPage } from '../config';
 import BaseballCard from './BaseballCard';
-import SearchBaseballCards from './SearchBaseballCards';
 
 export const ALL_BASEBALL_CARDS_QUERY = gql`
   query ALL_BASEBALL_CARDS_QUERY($skip: Int = 0, $first: Int) {
@@ -36,12 +35,10 @@ export default function BaseballCards({ page }) {
       first: perPage,
     },
   });
-  console.log(data, error, loading);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   return (
     <div>
-      <SearchBaseballCards />
       <BaseballCardsListStyles>
         {data.allBaseballCards.map((baseballcard) => (
           <BaseballCard key={baseballcard.id} baseballcard={baseballcard} />

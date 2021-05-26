@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Cart from './Cart';
 import Nav from './Nav';
 import Search from './Search';
+import SearchBaseballCards from './SearchBaseballCards';
+import Router from 'next/router';
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -36,6 +38,9 @@ const HeaderStyles = styled.header`
 `;
 
 export default function Header() {
+console.log(Router.router?.route);
+  const currentPath =  Router.router?.route;
+
   return (
     <HeaderStyles>
       <div className="bar">
@@ -45,7 +50,12 @@ export default function Header() {
         <Nav />
       </div>
       <div className="sub-bar">
-        <Search />
+        {currentPath === '/products' && (
+          <Search />
+        )}
+        {currentPath === '/baseballcards' && (
+          <SearchBaseballCards />
+        )}
       </div>
       <Cart />
     </HeaderStyles>

@@ -94,7 +94,7 @@ export default function Search() {
                 alt={item.lastName}
                 width="50"
               />
-              {item.firstName}
+              {item.firstName} {item.lastName}
             </DropDownItem>
           ))}
         {isOpen && !items.length && !loading && (

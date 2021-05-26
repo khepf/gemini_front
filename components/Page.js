@@ -50,17 +50,16 @@ const InnerStyles = styled.div`
   padding: 2rem;
 `;
 
-export default function Page({ children, cool }) {
+export default function Page(props) {
   return (
     <div>
       <GlobalStyles />
       <Header />
-      <InnerStyles>{children}</InnerStyles>
+      <InnerStyles>{props.children}</InnerStyles>
     </div>
   );
 }
 
 Page.propTypes = {
-  cool: PropTypes.string,
   children: PropTypes.any,
 };
