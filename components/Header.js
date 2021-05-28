@@ -38,8 +38,19 @@ const HeaderStyles = styled.header`
 `;
 
 export default function Header() {
-console.log(Router.router?.route);
+  console.log(Router.router?.route);
   const currentPath =  Router.router?.route;
+  // let searchbar;
+
+  // if (currentPath === '/baseballcards') {
+  //   searchbar = <SearchBaseballCards />
+  // } 
+  // else if (currentPath === '/products') {
+  //   searchbar = <Search />
+  // }
+  // else {
+  //   searchbar = null;
+  // }
 
   return (
     <HeaderStyles>
@@ -53,6 +64,7 @@ console.log(Router.router?.route);
         {currentPath === '/products' && (
           <Search />
         )}
+        {/* {currentPath === '/baseballcards' ? <SearchBaseballCards /> : <Search />} */}
         {currentPath === '/baseballcards' && (
           <SearchBaseballCards />
         )}

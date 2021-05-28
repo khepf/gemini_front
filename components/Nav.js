@@ -15,7 +15,7 @@ export default function Nav() {
         <>
           <Link href="/baseballcards">Cards</Link>
           <Link href="/orders">Orders</Link>
-          <Link href="/account">Account</Link>
+          <Link href="/inventory">Inventory</Link>
           <SignOut />
           <button type="button" onClick={openCart}>
             My Cart
