@@ -103,19 +103,16 @@ function InventoryTable() {
                     {
                         Header: 'Edit',
                         accessor: 'id',
-                        Cell: row => {
-                            console.log('link rowwwssssaaa', row.row.values.id)
-                            return <Link
-                            href={{
-                              pathname: '/updatecard',
-                              query: {
-                                id: row.row.values.id,
-                              },
-                            }}
-                          >
-                            Edit ✏️
-                          </Link>
-                        }
+                        Cell: row => <Link
+                        href={{
+                          pathname: '/updatecard',
+                          query: {
+                            id: row.row.values.id,
+                          },
+                        }}
+                      >
+                        Edit ✏️
+                      </Link>
                     },
                     {
                         Header: 'First Name',
