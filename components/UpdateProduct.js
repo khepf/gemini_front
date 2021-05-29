@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import useForm from '../lib/useForm';
 import DisplayError from './ErrorMessage';
 import Form from './styles/Form';
+import Router from 'next/router';
 
 const SINGLE_PRODUCT_QUERY = gql`
   query SINGLE_PRODUCT_QUERY($id: ID!) {
@@ -61,15 +62,10 @@ export default function UpdateProduct({ id }) {
             price: inputs.price,
           },
         }).catch(console.error);
-        console.log(res);
-        // Submit the inputfields to the backend:
-        // TODO: Handle Submit!!!
-        // const res = await createProduct();
-        // clearForm();
-        // // Go to that product's page!
-        // Router.push({
-        //   pathname: `/product/${res.data.createProduct.id}`,
-        // });
+        clearForm();
+        Router.push({
+          pathname: `/product/${id}`,
+        });
       }}
     >
       <DisplayError error={error || updateError} />

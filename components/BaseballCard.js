@@ -20,7 +20,7 @@ export default function BaseballCard({ baseballcard }) {
       <PriceTag>{formatMoney(baseballcard.sellingPrice)}</PriceTag>
       <p>{baseballcard.description}</p>
       <div className="buttonList">
-        <Link
+        {/* <Link
           href={{
             pathname: '/update',
             query: {
@@ -29,9 +29,9 @@ export default function BaseballCard({ baseballcard }) {
           }}
         >
           Edit ✏️
-        </Link>
+        </Link> */}
         <AddToCart id={baseballcard.id} />
-        <DeleteBaseballCard id={baseballcard.id}>Delete</DeleteBaseballCard>
+        {/* <DeleteBaseballCard id={baseballcard.id}>Delete</DeleteBaseballCard> */}
       </div>
     </ItemStyles>
   );

@@ -4,6 +4,7 @@ import Form from './styles/Form';
 import useForm from '../lib/useForm';
 import { CURRENT_USER_QUERY } from './User';
 import Error from './ErrorMessage';
+import Router from 'next/router';
 
 const SIGNIN_MUTATION = gql`
   mutation SIGNIN_MUTATION($email: String!, $password: String!) {
@@ -39,6 +40,10 @@ export default function SignIn() {
     const res = await signin();
     console.log(res);
     resetForm();
+    Router.push({
+      pathname: `/products`
+    });
+
     // Send the email and password to the graphqlAPI
   }
   const error =
