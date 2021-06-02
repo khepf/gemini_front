@@ -2,15 +2,18 @@ DONE wire up fe for dynamic product pages
 DONE right now if no image on baseball card page, it breaks\
 DONE fix search area in ui
 DONE need inventory page on front end
+DONE create testcustomer, testseller users and assign/create roles accordingly
+DONE fix roles
 add more images
-create testcustomer, testseller users and assign/create roles accordingly
 fill in more data
-fix roles
 fix redirects for when not signed in
 sort out/merge product add to cart and checkout vs baseball card add to cart and checkout
 research and finish search 
 form validation
 need isSelling flag
+add products to inventory page
+- need to not be able to see inventory is role is customer
+- as seller need to only see items that the seller owns
 ----------MVP--------------------
 add zoom in on image feature?
 crop image in app?

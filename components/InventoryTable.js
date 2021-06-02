@@ -1,16 +1,18 @@
 import { useMemo } from 'react';
 import { useQuery } from '@apollo/client';
+import { useUser } from './User';
 import gql from 'graphql-tag';
 import formatMoney from '../lib/formatMoney';
 import Link from 'next/link';
+import DisplayError from './ErrorMessage';
 import { inventoryPerPage } from '../config';
 import { useTable, useSortBy } from 'react-table'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export const ALL_BASEBALL_CARDS_QUERY = gql`
-  query ALL_BASEBALL_CARDS_QUERY {
-    allBaseballCards {
+  query ALL_BASEBALL_CARDS_QUERY($currentUserId: ID!) {
+    allBaseballCards(where: {user: {id: $currentUserId}}) {
       id
       firstName
       lastName
@@ -25,6 +27,9 @@ export const ALL_BASEBALL_CARDS_QUERY = gql`
       sellingDate
       soldPrice
       soldDate
+      user {
+          id
+      }
     }
   }
 `;
@@ -94,7 +99,7 @@ function Table({ columns, data }) {
     )
 }
 
-function InventoryTable() {
+function InventoryTable(userId) {
     const columns = useMemo(
         () => [
             {
@@ -173,9 +178,14 @@ function InventoryTable() {
         ],
         []
     )
-
-    const { data, error, loading } = useQuery(ALL_BASEBALL_CARDS_QUERY);
     
+    const currentUserId = Object.values(userId)[0];
+    const { data, error, loading } = useQuery(ALL_BASEBALL_CARDS_QUERY, {
+        variables: {
+            currentUserId
+        }
+    });
+
     if (loading) return 'Loading...';
     if (error) return <DisplayError error={error} />;
     return (
