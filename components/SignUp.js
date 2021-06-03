@@ -1,9 +1,25 @@
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
-import Form from './styles/Form';
+import Form,  { FormCover } from './styles/Form';
 import useForm from '../lib/useForm';
 import { CURRENT_USER_QUERY } from './User';
 import Error from './ErrorMessage';
+import Link from 'next/link';
+import styled from 'styled-components';
+
+const SignUpButtonStyles = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  a {
+    color: gray;
+  }
+`;
 
 const SIGNUP_MUTATION = gql`
   mutation SIGNUP_MUTATION(
@@ -40,6 +56,7 @@ export default function SignUp() {
     // Send the email and password to the graphqlAPI
   }
   return (
+    <FormCover>
     <Form method="POST" onSubmit={handleSubmit}>
       <h2>Sign Up For an Account</h2>
       <Error error={error} />
@@ -82,8 +99,13 @@ export default function SignUp() {
             onChange={handleChange}
           />
         </label>
+        <SignUpButtonStyles>
+        <Link href="/signin">Sign In</Link>
         <button type="submit">Sign Up!</button>
+        <Link href="/passwordreset">Password Reset</Link>
+        </SignUpButtonStyles>
       </fieldset>
     </Form>
+    </FormCover>
   );
 }

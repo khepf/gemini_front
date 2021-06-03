@@ -1,10 +1,27 @@
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
-import Form from './styles/Form';
+import Form,  { FormCover } from './styles/Form';
 import useForm from '../lib/useForm';
 import { CURRENT_USER_QUERY } from './User';
 import Error from './ErrorMessage';
 import Router from 'next/router';
+import Link from 'next/link';
+import styled from 'styled-components';
+
+const SignInButtonStyles = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  a {
+    color: gray;
+  }
+`;
+
 
 const SIGNIN_MUTATION = gql`
   mutation SIGNIN_MUTATION($email: String!, $password: String!) {
@@ -52,8 +69,9 @@ export default function SignIn() {
       ? data?.authenticateUserWithPassword
       : undefined;
   return (
+    <FormCover>
     <Form method="POST" onSubmit={handleSubmit}>
-      <h2>Sign Into Your Account</h2>
+      <h2>Sign In to Your Account</h2>
       <Error error={error} />
       <fieldset>
         <label htmlFor="email">
@@ -78,8 +96,14 @@ export default function SignIn() {
             onChange={handleChange}
           />
         </label>
+        <SignInButtonStyles>
+          <Link href="/signup">Sign Up</Link>
         <button type="submit">Sign In!</button>
+        <Link href="/passwordreset">Reset Password</Link>
+        </SignInButtonStyles>
+        
       </fieldset>
-    </Form>
+      </Form>
+    </FormCover>
   );
 }

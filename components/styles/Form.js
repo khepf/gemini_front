@@ -12,7 +12,14 @@ const loading = keyframes`
   }
 `;
 
+export const FormCover = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+`
+
 const Form = styled.form`
+max-width: 500px;
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
   background: rgba(0, 0, 0, 0.02);
   border: 5px solid white;

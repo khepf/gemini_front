@@ -12,7 +12,7 @@ const GridStyles = styled.div`
 export default function SignInPage() {
   return (
     <GridStyles>
-      <SignIn />
+      <SignUp />
     </GridStyles>
   );
 }

@@ -4,9 +4,9 @@ DONE fix search area in ui
 DONE need inventory page on front end
 DONE create testcustomer, testseller users and assign/create roles accordingly
 DONE fix roles
+DONE fix redirects for when not signed in
 add more images
 fill in more data
-fix redirects for when not signed in
 sort out/merge product add to cart and checkout vs baseball card add to cart and checkout
 research and finish search 
 form validation
