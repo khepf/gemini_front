@@ -5,6 +5,7 @@ DONE need inventory page on front end
 DONE create testcustomer, testseller users and assign/create roles accordingly
 DONE fix roles
 DONE fix redirects for when not signed in
+weird stuff with user object when changing pages
 add more images
 fill in more data
 sort out/merge product add to cart and checkout vs baseball card add to cart and checkout

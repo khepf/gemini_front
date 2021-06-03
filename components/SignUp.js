@@ -7,6 +7,8 @@ import Error from './ErrorMessage';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+
+
 const SignUpButtonStyles = styled.div`
   display: flex;
   justify-content: center;

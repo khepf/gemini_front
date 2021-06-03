@@ -1,5 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
+const img = "/static/cards.jpg";
+
 const loading = keyframes`
   from {
     background-position: 0 0;
@@ -13,9 +15,12 @@ const loading = keyframes`
 `;
 
 export const FormCover = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-image: url(${img});
 `
 
 const Form = styled.form`

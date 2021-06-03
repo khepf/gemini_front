@@ -4,7 +4,7 @@ import Cart from './Cart';
 import Nav from './Nav';
 import Search from './Search';
 import SearchBaseballCards from './SearchBaseballCards';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -38,19 +38,10 @@ const HeaderStyles = styled.header`
 `;
 
 export default function Header() {
-  console.log(Router.router?.route);
-  const currentPath =  Router.router?.route;
-  // let searchbar;
-
-  // if (currentPath === '/baseballcards') {
-  //   searchbar = <SearchBaseballCards />
-  // } 
-  // else if (currentPath === '/products') {
-  //   searchbar = <Search />
-  // }
-  // else {
-  //   searchbar = null;
-  // }
+  // console.log(Router.router?.route);
+  // const currentPath =  Router.router?.route;
+  const router = useRouter();
+  const currentPath = router.asPath;
 
   return (
     <HeaderStyles>
@@ -61,14 +52,13 @@ export default function Header() {
         <Nav />
       </div>
       <div className="sub-bar">
-        {currentPath === '/products' && (
-          <Search />
-        )}
-        {/* {currentPath === '/baseballcards' ? <SearchBaseballCards /> : <Search />} */}
-        {currentPath === '/baseballcards' && (
-          <SearchBaseballCards />
-        )}
-      </div>
+            {currentPath === '/products' && (
+                <Search />
+            )}
+            {currentPath === '/baseballcards' && (
+                <SearchBaseballCards />
+            )}
+        </div>
       <Cart />
     </HeaderStyles>
   );
