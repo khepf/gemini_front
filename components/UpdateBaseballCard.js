@@ -11,8 +11,17 @@ const SINGLE_BASEBALL_CARD_QUERY = gql`
       id
       firstName
       lastName
+      year
+      brand
+      card_Number
+      condition
       description
+      buyPrice
+      buyDate
       sellingPrice
+      sellingDate
+      soldPrice
+      soldDate
     }
   }
 `;
@@ -22,18 +31,36 @@ const UPDATE_BASEBALL_CARD_MUTATION = gql`
     $id: ID!
     $firstName: String
     $lastName: String
+    $year: Int
+    $brand: String
+    $card_Number: Int
+    $condition: String
     $description: String
+    $buyPrice: Int
+    $buyDate: String
     $sellingPrice: Int
+    $sellingDate: String
+    $soldPrice: Int
+    $soldDate: String
   ) {
     updateBaseballCard(
       id: $id
-      data: { firstName: $firstName, lastName: $lastName, description: $description, sellingPrice: $sellingPrice }
+      data: { firstName: $firstName, lastName: $lastName, year: $year, brand: $brand, card_Number: $card_Number, condition: $condition, description: $description, buyPrice: $buyPrice, buyDate: $buyDate, sellingPrice: $sellingPrice, sellingDate: $sellingDate, soldPrice: $soldPrice, soldDate: $soldDate }
     ) {
       id
       firstName
       lastName
+      year
+      brand
+      card_Number
+      condition
       description
+      buyPrice
+      buyDate
       sellingPrice
+      sellingDate
+      soldPrice
+      soldDate
     }
   }
 `;
@@ -62,8 +89,17 @@ export default function UpdateBaseballCard({ id }) {
             id,
             firstName: inputs.firstName,
             lastName: inputs.lastName,
+            year: inputs.year,
+            brand: inputs.brand,
+            card_Number: inputs.card_Number,
+            condition: inputs.condition,
             description: inputs.description,
+            buyPrice: inputs.buyPrice,
+            buyDate: inputs.buyDate,
             sellingPrice: inputs.sellingPrice,
+            sellingDate: inputs.sellingDate,
+            soldPrice: inputs.soldPrice,
+            soldDate: inputs.soldDate
           },
         }).catch(console.error);
         clearForm();
@@ -96,14 +132,47 @@ export default function UpdateBaseballCard({ id }) {
             onChange={handleChange}
           />
         </label>
-        <label htmlFor="sellingPrice">
-          Selling Price
+        <label htmlFor="year">
+          Year
           <input
-            type="number"
-            id="sellingPrice"
-            name="sellingPrice"
-            placeholder="Selling Price"
-            value={inputs.sellingPrice}
+            type="text"
+            id="year"
+            name="year"
+            placeholder="Year"
+            value={inputs.year}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="brand">
+          Brand
+          <input
+            type="text"
+            id="brand"
+            name="brand"
+            placeholder="Brand"
+            value={inputs.brand}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="card_Number">
+          Card #
+          <input
+            type="text"
+            id="card_Number"
+            name="card_Number"
+            placeholder="Card #"
+            value={inputs.card_Number}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="condition">
+          Condition
+          <input
+            type="text"
+            id="condition"
+            name="condition"
+            placeholder="Condition"
+            value={inputs.condition}
             onChange={handleChange}
           />
         </label>
@@ -117,7 +186,72 @@ export default function UpdateBaseballCard({ id }) {
             onChange={handleChange}
           />
         </label>
-
+        <label htmlFor="buyPrice">
+          Buy Price
+          <input
+            type="number"
+            id="buyPrice"
+            name="buyPrice"
+            placeholder="Buy Price"
+            value={inputs.buyPrice}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="buyDate">
+          Buy Date
+          <input
+            type="text"
+            id="buyDate"
+            name="buyDate"
+            placeholder="Buy Date"
+            value={inputs.buyDate}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="sellingPrice">
+          Selling Price
+          <input
+            type="number"
+            id="sellingPrice"
+            name="sellingPrice"
+            placeholder="Selling Price"
+            value={inputs.sellingPrice}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="sellingDate">
+          Selling Date
+          <input
+            type="text"
+            id="sellingDate"
+            name="sellingDate"
+            placeholder="Selling Date"
+            value={inputs.sellingDate}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="soldPrice">
+          Sold Price
+          <input
+            type="number"
+            id="soldPrice"
+            name="soldPrice"
+            placeholder="Sold Price"
+            value={inputs.soldPrice}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="soldDate">
+          Sold Date
+          <input
+            type="text"
+            id="soldDate"
+            name="soldDate"
+            placeholder="Sold Date"
+            value={inputs.soldDate}
+            onChange={handleChange}
+          />
+        </label>
         <button type="submit">Update Baseball Card</button>
       </fieldset>
     </Form>

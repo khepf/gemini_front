@@ -13,7 +13,7 @@ form validation
 need isSelling flag
 add products to inventory page
 - need to not be able to see inventory is role is customer
-- as seller need to only see items that the seller owns
+- DONE as seller need to only see items that the seller owns
 ----------MVP--------------------
 add zoom in on image feature?
 crop image in app?

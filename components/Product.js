@@ -5,8 +5,17 @@ import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
 import DeleteProduct from './DeleteProduct';
 import AddToCart from './AddToCart';
+import { useUser } from './User';
+import styled from 'styled-components';
+
+const SignInLinkStyles = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default function Product({ product }) {
+  const user = useUser();
   return (
     <ItemStyles>
       <img
@@ -19,7 +28,7 @@ export default function Product({ product }) {
       <PriceTag>{formatMoney(product.price)}</PriceTag>
       <p>{product.description}</p>
       <div className="buttonList">
-        <Link
+        {/* <Link
           href={{
             pathname: '/update',
             query: {
@@ -28,9 +37,16 @@ export default function Product({ product }) {
           }}
         >
           Edit ✏️
-        </Link>
-        <AddToCart id={product.id} />
-        <DeleteProduct id={product.id}>Delete</DeleteProduct>
+        </Link> */}
+      
+      {user && <AddToCart id={product.id} />}
+      {!user && (
+        <SignInLinkStyles>
+          <Link href="/signin">Sign In or Register to Add to Cart</Link>
+        </SignInLinkStyles>
+      )}
+       
+        {/* <DeleteProduct id={product.id}>Delete</DeleteProduct> */}
       </div>
     </ItemStyles>
   );

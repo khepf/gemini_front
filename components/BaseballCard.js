@@ -5,8 +5,18 @@ import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
 import DeleteBaseballCard from './DeleteBaseballCard';
 import AddToCart from './AddToCart';
+import { useUser } from './User';
+import styled from 'styled-components';
+
+const SignInLinkStyles = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 
 export default function BaseballCard({ baseballcard }) {
+  const user = useUser();
   return (
     <ItemStyles>
       <img
@@ -30,7 +40,13 @@ export default function BaseballCard({ baseballcard }) {
         >
           Edit ✏️
         </Link> */}
-        <AddToCart id={baseballcard.id} />
+        {user && <AddToCart id={baseballcard.id} />}
+        {!user && (
+        <SignInLinkStyles>
+          <Link href="/signin">Sign In or Register to Add to Cart</Link>
+        </SignInLinkStyles>
+      )}
+     
         {/* <DeleteBaseballCard id={baseballcard.id}>Delete</DeleteBaseballCard> */}
       </div>
     </ItemStyles>

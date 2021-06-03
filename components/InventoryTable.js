@@ -51,7 +51,6 @@ function Table({ columns, data }) {
         },
         useSortBy
     )
-
     // Render the UI for your table
     return (
         <div>
@@ -181,13 +180,11 @@ function InventoryTable(userId) {
     
     const currentUserId = Object.values(userId)[0];
     const { data, error, loading } = useQuery(ALL_BASEBALL_CARDS_QUERY, {
-        variables: {
-            currentUserId
-        }
+        variables: { currentUserId }
     });
-
     if (loading) return 'Loading...';
     if (error) return <DisplayError error={error} />;
+    
     return (
    
     <Table columns={columns} data={data.allBaseballCards} />

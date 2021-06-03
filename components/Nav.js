@@ -11,9 +11,9 @@ export default function Nav() {
   return (
     <NavStyles>
       <Link href="/products">Products</Link>
+      <Link href="/baseballcards">Cards</Link>
       {user && (
         <>
-          <Link href="/baseballcards">Cards</Link>
           <Link href="/orders">Orders</Link>
           <Link href="/inventory">Inventory</Link>
           <SignOut />

@@ -4,6 +4,12 @@ import styled from 'styled-components';
 import { perPage } from '../config';
 import Product from './Product';
 
+const SignInLinkStyles = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const ALL_PRODUCTS_QUERY = gql`
   query ALL_PRODUCTS_QUERY($skip: Int = 0, $first: Int) {
     allProducts(first: $first, skip: $skip) {
