@@ -6,12 +6,13 @@ import BaseballCard from './BaseballCard';
 
 export const ALL_BASEBALL_CARDS_QUERY = gql`
   query ALL_BASEBALL_CARDS_QUERY($skip: Int = 0, $first: Int) {
-    allBaseballCards(first: $first, skip: $skip) {
+    allBaseballCards(first: $first, skip: $skip, where: {inventoryStatus: "selling"}) {
       id
       firstName
       lastName
       description
       sellingPrice
+      inventoryStatus
       image1 {
         id
         image {

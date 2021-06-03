@@ -10,11 +10,13 @@ add more images
 fill in more data
 sort out/merge product add to cart and checkout vs baseball card add to cart and checkout
 form validation
-need isSelling flag
+need notSelling isSelling isSold flag
+move edit and delete to proper place on product and baseball card
 add products to inventory page
 - need to not be able to see inventory is role is customer
 - DONE as seller need to only see items that the seller owns
 ----------MVP--------------------
+cart expiration
 research and finish search 
 add zoom in on image feature?
 crop image in app?

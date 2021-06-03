@@ -27,6 +27,7 @@ export const ALL_BASEBALL_CARDS_QUERY = gql`
       sellingDate
       soldPrice
       soldDate
+      inventoryStatus
       user {
           id
       }

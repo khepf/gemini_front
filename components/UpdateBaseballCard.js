@@ -22,6 +22,7 @@ const SINGLE_BASEBALL_CARD_QUERY = gql`
       sellingDate
       soldPrice
       soldDate
+      inventoryStatus
     }
   }
 `;
@@ -42,10 +43,11 @@ const UPDATE_BASEBALL_CARD_MUTATION = gql`
     $sellingDate: String
     $soldPrice: Int
     $soldDate: String
+    $inventoryStatus: String
   ) {
     updateBaseballCard(
       id: $id
-      data: { firstName: $firstName, lastName: $lastName, year: $year, brand: $brand, card_Number: $card_Number, condition: $condition, description: $description, buyPrice: $buyPrice, buyDate: $buyDate, sellingPrice: $sellingPrice, sellingDate: $sellingDate, soldPrice: $soldPrice, soldDate: $soldDate }
+      data: { firstName: $firstName, lastName: $lastName, year: $year, brand: $brand, card_Number: $card_Number, condition: $condition, description: $description, buyPrice: $buyPrice, buyDate: $buyDate, sellingPrice: $sellingPrice, sellingDate: $sellingDate, soldPrice: $soldPrice, soldDate: $soldDate, inventoryStatus: $inventoryStatus }
     ) {
       id
       firstName
@@ -61,6 +63,7 @@ const UPDATE_BASEBALL_CARD_MUTATION = gql`
       sellingDate
       soldPrice
       soldDate
+      inventoryStatus
     }
   }
 `;
@@ -99,7 +102,9 @@ export default function UpdateBaseballCard({ id }) {
             sellingPrice: inputs.sellingPrice,
             sellingDate: inputs.sellingDate,
             soldPrice: inputs.soldPrice,
-            soldDate: inputs.soldDate
+            soldDate: inputs.soldDate,
+            inventoryStatus: inputs.inventoryStatus
+
           },
         }).catch(console.error);
         clearForm();
@@ -251,6 +256,21 @@ export default function UpdateBaseballCard({ id }) {
             value={inputs.soldDate}
             onChange={handleChange}
           />
+        </label>
+        <label htmlFor="inventoryStatus">
+          Inventory Status
+          <select
+            id="inventoryStatus"
+            name="inventoryStatus"
+            placeholder="Select..."
+            value={inputs.inventoryStatus}
+            onChange={handleChange}
+          >
+            <option value="notSelling">Not Selling</option>
+  <option value="selling">Selling</option>
+  <option value="sold">Sold</option>
+
+            </select>
         </label>
         <button type="submit">Update Baseball Card</button>
       </fieldset>

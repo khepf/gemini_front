@@ -1,4 +1,4 @@
-import UpdateBaseballCard from '../components/UpdateBaseballCard/';
+import UpdateBaseballCard from '../components/UpdateBaseballCard';
 
 export default function UpdateCardPage({ query }) {
   console.log(query);

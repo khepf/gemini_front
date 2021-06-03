@@ -4,9 +4,9 @@ import Cart from './Cart';
 import Nav from './Nav';
 import Search from './Search';
 import SearchBaseballCards from './SearchBaseballCards';
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
-const Logo = styled.h1`
+const LogoStyles = styled.h1`
   font-size: 4rem;
   margin-left: 2rem;
   position: relative;
@@ -38,17 +38,15 @@ const HeaderStyles = styled.header`
 `;
 
 export default function Header() {
-  // console.log(Router.router?.route);
-  // const currentPath =  Router.router?.route;
   const router = useRouter();
   const currentPath = router.asPath;
 
   return (
     <HeaderStyles>
       <div className="bar">
-        <Logo>
+        <LogoStyles>
           <Link href="/">Gemini</Link>
-        </Logo>
+        </LogoStyles>
         <Nav />
       </div>
       <div className="sub-bar">
