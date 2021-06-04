@@ -8,6 +8,7 @@ import DisplayError from './ErrorMessage';
 import { inventoryPerPage } from '../config';
 import { useTable, useSortBy } from 'react-table'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import styled from 'styled-components';
 
 
 export const ALL_BASEBALL_CARDS_QUERY = gql`
@@ -52,7 +53,8 @@ function Table({ columns, data }) {
         },
         useSortBy
     )
-    // Render the UI for your table
+    // Render the UI for the table
+    console.log(rows)
     return (
         <div>
             <table className="table" {...getTableProps()}>
@@ -60,7 +62,7 @@ function Table({ columns, data }) {
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map(column => (
-                                // Add the sorting props to control sorting. For this example
+                                // Add the sorting props to control sorting. Here
                                 // we can add them into the header props
                                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                                     {column.render('Header')}
@@ -81,8 +83,9 @@ function Table({ columns, data }) {
                     {rows.map(
                         (row, i) => {
                             prepareRow(row);
+                             
                             return (
-                                <tr {...row.getRowProps()}>
+                                <tr {...row.getRowProps()}  style={row.original.inventoryStatus === "selling" ? {background: "lightgreen"} : {background: ""}}>
                                     {row.cells.map(cell => {
                                         return (
                                             <td {...cell.getCellProps()}>{cell.render('Cell')}</td>

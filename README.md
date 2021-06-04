@@ -5,12 +5,12 @@ DONE need inventory page on front end
 DONE create testcustomer, testseller users and assign/create roles accordingly
 DONE fix roles
 DONE fix redirects for when not signed in
+DONE need notSelling isSelling isSold flag
 hide inventory from customer
 add more images
 fill in more data
 sort out/merge product add to cart and checkout vs baseball card add to cart and checkout
 form validation
-need notSelling isSelling isSold flag
 move edit and delete to proper place on product and baseball card
 add products to inventory page
 - need to not be able to see inventory is role is customer
