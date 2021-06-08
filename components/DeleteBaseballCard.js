@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
+import Router from "next/router";
 
 const DELETE_BASEBALL_CARD_MUTATION = gql`
   mutation DELETE_BASEBALL_CARD_MUTATION($id: ID!) {
@@ -31,7 +32,11 @@ export default function DeleteBaseballCard({ id, children }) {
       disabled={loading}
       onClick={() => {
         if (confirm('Are you sure you want to delete this baseball card?')) {
-          deleteBaseballCard().catch((err) => alert(err.message));
+          deleteBaseballCard().then(() => {
+            Router.push({
+              pathname: `/inventory`,
+            });
+          }).catch((err) => alert(err.message));
         }
       }}
     >

@@ -1,9 +1,10 @@
-import { useMutation, useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
-import useForm from '../lib/useForm';
-import DisplayError from './ErrorMessage';
-import Form from './styles/Form';
-import Router from 'next/router';
+import { useMutation, useQuery } from "@apollo/client";
+import gql from "graphql-tag";
+import useForm from "../lib/useForm";
+import DisplayError from "./ErrorMessage";
+import FormStyles from "./styles/Form";
+import Router from "next/router";
+import DeleteBaseballCard from "./DeleteBaseballCard";
 
 const SINGLE_BASEBALL_CARD_QUERY = gql`
   query SINGLE_BASEBALL_CARD_QUERY($id: ID!) {
@@ -47,7 +48,22 @@ const UPDATE_BASEBALL_CARD_MUTATION = gql`
   ) {
     updateBaseballCard(
       id: $id
-      data: { firstName: $firstName, lastName: $lastName, year: $year, brand: $brand, card_Number: $card_Number, condition: $condition, description: $description, buyPrice: $buyPrice, buyDate: $buyDate, sellingPrice: $sellingPrice, sellingDate: $sellingDate, soldPrice: $soldPrice, soldDate: $soldDate, inventoryStatus: $inventoryStatus }
+      data: {
+        firstName: $firstName
+        lastName: $lastName
+        year: $year
+        brand: $brand
+        card_Number: $card_Number
+        condition: $condition
+        description: $description
+        buyPrice: $buyPrice
+        buyDate: $buyDate
+        sellingPrice: $sellingPrice
+        sellingDate: $sellingDate
+        soldPrice: $soldPrice
+        soldDate: $soldDate
+        inventoryStatus: $inventoryStatus
+      }
     ) {
       id
       firstName
@@ -69,22 +85,25 @@ const UPDATE_BASEBALL_CARD_MUTATION = gql`
 `;
 
 export default function UpdateBaseballCard({ id }) {
-  // 1. We need to get the existing product
+  // 1. We need to get the existing baseball card
   const { data, error, loading } = useQuery(SINGLE_BASEBALL_CARD_QUERY, {
     variables: { id },
   });
-  // 2. We need to get the mutation to update the product
+  // 2. We need to get the mutation to update the baseball card
   const [
     updateBaseballCard,
     { data: updateData, error: updateError, loading: updateLoading },
   ] = useMutation(UPDATE_BASEBALL_CARD_MUTATION);
   // 2.5 Create some state for the form inputs:
-  const { inputs, handleChange, clearForm, resetForm } = useForm(data?.BaseballCard);
+  const { inputs, handleChange, clearForm, resetForm } = useForm(
+    data?.BaseballCard
+  );
   console.log(inputs);
   if (loading) return <p>loading...</p>;
   // 3. We need the form to handle the updates
   return (
-    <Form
+    <>
+    <FormStyles
       onSubmit={async (e) => {
         e.preventDefault();
         const res = await updateBaseballCard({
@@ -103,8 +122,7 @@ export default function UpdateBaseballCard({ id }) {
             sellingDate: inputs.sellingDate,
             soldPrice: inputs.soldPrice,
             soldDate: inputs.soldDate,
-            inventoryStatus: inputs.inventoryStatus
-
+            inventoryStatus: inputs.inventoryStatus,
           },
         }).catch(console.error);
         clearForm();
@@ -124,6 +142,7 @@ export default function UpdateBaseballCard({ id }) {
             placeholder="First Name"
             value={inputs.firstName}
             onChange={handleChange}
+            required
           />
         </label>
         <label htmlFor="lastName">
@@ -135,6 +154,7 @@ export default function UpdateBaseballCard({ id }) {
             placeholder="Last Name"
             value={inputs.lastName}
             onChange={handleChange}
+            required
           />
         </label>
         <label htmlFor="year">
@@ -146,6 +166,7 @@ export default function UpdateBaseballCard({ id }) {
             placeholder="Year"
             value={inputs.year}
             onChange={handleChange}
+            required
           />
         </label>
         <label htmlFor="brand">
@@ -157,6 +178,7 @@ export default function UpdateBaseballCard({ id }) {
             placeholder="Brand"
             value={inputs.brand}
             onChange={handleChange}
+            required
           />
         </label>
         <label htmlFor="card_Number">
@@ -168,6 +190,7 @@ export default function UpdateBaseballCard({ id }) {
             placeholder="Card #"
             value={inputs.card_Number}
             onChange={handleChange}
+            required
           />
         </label>
         <label htmlFor="condition">
@@ -179,6 +202,7 @@ export default function UpdateBaseballCard({ id }) {
             placeholder="Condition"
             value={inputs.condition}
             onChange={handleChange}
+            required
           />
         </label>
         <label htmlFor="description">
@@ -267,13 +291,14 @@ export default function UpdateBaseballCard({ id }) {
             onChange={handleChange}
           >
             <option value="notSelling">Not Selling</option>
-  <option value="selling">Selling</option>
-  <option value="sold">Sold</option>
-
-            </select>
+            <option value="selling">Selling</option>
+            <option value="sold">Sold</option>
+          </select>
         </label>
         <button type="submit">Update Baseball Card</button>
       </fieldset>
-    </Form>
+    </FormStyles>
+    <DeleteBaseballCard id={id}>Delete</DeleteBaseballCard>
+    </>
   );
 }

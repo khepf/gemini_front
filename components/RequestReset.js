@@ -72,7 +72,7 @@ export default function RequestReset() {
           />
         </label>
         <PasswordResetButtonStyles>
-        <Link href="/signup">Sign Up</Link>
+        {/* <Link href="/signup">Sign Up</Link> */}
         <button type="submit">Password Reset!</button>
         <Link href="/signin">Sign In</Link>
         </PasswordResetButtonStyles>

@@ -6,15 +6,19 @@ DONE create testcustomer, testseller users and assign/create roles accordingly
 DONE fix roles
 DONE fix redirects for when not signed in
 DONE need notSelling isSelling isSold flag
-hide inventory from customer
+DONE hide inventory from customer
+DONE need to not be able to see inventory is role is customer
+DONE as seller need to only see items that the seller owns
+DONE move edit and delete to proper place on baseball card
+DONE comment out signup - fix css
 add more images
 fill in more data
-sort out/merge product add to cart and checkout vs baseball card add to cart and checkout
 form validation
-move edit and delete to proper place on product and baseball card
-add products to inventory page
-- need to not be able to see inventory is role is customer
-- DONE as seller need to only see items that the seller owns
+add ability to add both images to FE create
+add ability to add both images to FE update
+
+
+
 ----------MVP--------------------
 cart expiration
 research and finish search 

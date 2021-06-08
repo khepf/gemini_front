@@ -24,21 +24,22 @@ const CartItemStyles = styled.li`
 `;
 
 function CartItem({ cartItem }) {
-  const { product } = cartItem;
-  if (!product) return null;
+  console.log('cartItem', cartItem);
+  const { baseballcard } = cartItem;
+  if (!baseballcard) return null;
   return (
     <CartItemStyles>
       <img
         width="100"
-        src={product.photo.image.publicUrlTransformed}
-        alt={product.name}
+        src={baseballcard.image1.image.publicUrlTransformed}
+        alt={baseballcard.firstName}
       />
       <div>
-        <h3>{product.name}</h3>
+        <h3>{baseballcard.firstName}</h3>
         <p>
-          {formatMoney(product.price * cartItem.quantity)}-
+          {formatMoney(baseballcard.price * cartItem.quantity)}-
           <em>
-            {cartItem.quantity} &times; {formatMoney(product.price)} each
+            {cartItem.quantity} &times; {formatMoney(baseballcard.sellingPrice)} each
           </em>
         </p>
       </div>

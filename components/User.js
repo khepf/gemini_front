@@ -7,15 +7,20 @@ const CURRENT_USER_QUERY = gql`
         id
         email
         name
+        role {
+          name
+        }
         cart {
           id
           quantity
-          product {
+          baseballcard {
             id
-            price
-            name
-            description
-            photo {
+            sellingPrice
+            firstName
+            lastName
+            year
+            brand
+            image1 {
               image {
                 publicUrlTransformed
               }

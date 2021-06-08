@@ -18,11 +18,11 @@ const USER_ORDERS_QUERY = gql`
       }
       items {
         id
-        name
-        description
-        price
+        firstName
+        lastName
+        sellingPrice
         quantity
-        photo {
+        image1 {
           image {
             publicUrlTransformed
           }
@@ -61,7 +61,7 @@ export default function OrdersPage() {
                 <div className="order-meta">
                   <p>{countItemsInAnOrder(order)} Items</p>
                   <p>
-                    {order.items.length} Product
+                    {order.items.length} Baseball Card
                     {order.items.length === 1 ? '' : 's'}
                   </p>
                   <p>{formatMoney(order.total)}</p>
@@ -70,8 +70,8 @@ export default function OrdersPage() {
                   {order.items.map((item) => (
                     <img
                       key={`image-${item.id}`}
-                      src={item.photo?.image?.publicUrlTransformed}
-                      alt={item.name}
+                      src={item.image1?.image?.publicUrlTransformed}
+                      alt={item.firstName}
                     />
                   ))}
                 </div>

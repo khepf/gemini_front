@@ -1,12 +1,12 @@
-import gql from 'graphql-tag';
-import { useMutation } from '@apollo/client';
-import Form,  { FormCover } from './styles/Form';
-import useForm from '../lib/useForm';
-import { CURRENT_USER_QUERY } from './User';
-import Error from './ErrorMessage';
-import Router from 'next/router';
-import Link from 'next/link';
-import styled from 'styled-components';
+import gql from "graphql-tag";
+import { useMutation } from "@apollo/client";
+import Form, { FormCover } from "./styles/Form";
+import useForm from "../lib/useForm";
+import { CURRENT_USER_QUERY } from "./User";
+import Error from "./ErrorMessage";
+import Router from "next/router";
+import Link from "next/link";
+import styled from "styled-components";
 
 const SignInButtonStyles = styled.div`
   display: flex;
@@ -21,7 +21,6 @@ const SignInButtonStyles = styled.div`
     color: gray;
   }
 `;
-
 
 const SIGNIN_MUTATION = gql`
   mutation SIGNIN_MUTATION($email: String!, $password: String!) {
@@ -43,8 +42,8 @@ const SIGNIN_MUTATION = gql`
 
 export default function SignIn() {
   const { inputs, handleChange, resetForm } = useForm({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
   const [signin, { data, loading }] = useMutation(SIGNIN_MUTATION, {
     variables: inputs,
@@ -56,51 +55,50 @@ export default function SignIn() {
     const res = await signin();
     resetForm();
     Router.push({
-      pathname: `/products`
+      pathname: `/baseballcards`,
     });
 
     // Send the email and password to the graphqlAPI
   }
   const error =
     data?.authenticateUserWithPassword.__typename ===
-    'UserAuthenticationWithPasswordFailure'
+    "UserAuthenticationWithPasswordFailure"
       ? data?.authenticateUserWithPassword
       : undefined;
   return (
     <FormCover>
-    <Form method="POST" onSubmit={handleSubmit}>
-      <h2>Sign In to Your Account</h2>
-      <Error error={error} />
-      <fieldset>
-        <label htmlFor="email">
-          Email
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email Address"
-            autoComplete="email"
-            value={inputs.email}
-            onChange={handleChange}
-          />
-        </label>
-        <label htmlFor="password">
-          Password
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            autoComplete="password"
-            value={inputs.password}
-            onChange={handleChange}
-          />
-        </label>
-        <SignInButtonStyles>
-          <Link href="/signup">Sign Up</Link>
-        <button type="submit">Sign In!</button>
-        <Link href="/passwordreset">Reset Password</Link>
-        </SignInButtonStyles>
-        
-      </fieldset>
+      <Form method="POST" onSubmit={handleSubmit}>
+        <h2>Sign In to Your Account</h2>
+        <Error error={error} />
+        <fieldset>
+          <label htmlFor="email">
+            Email
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email Address"
+              autoComplete="email"
+              value={inputs.email}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="password">
+            Password
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              autoComplete="password"
+              value={inputs.password}
+              onChange={handleChange}
+            />
+          </label>
+          <SignInButtonStyles>
+            {/* <Link href="/signup">Sign Up</Link> */}
+            <button type="submit">Sign In!</button>
+            <Link href="/passwordreset">Reset Password</Link>
+          </SignInButtonStyles>
+        </fieldset>
       </Form>
     </FormCover>
   );

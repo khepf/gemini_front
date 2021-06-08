@@ -8,7 +8,7 @@ import AddToCart from './AddToCart';
 import { useUser } from './User';
 import styled from 'styled-components';
 
-const SignInLinkStyles = styled.a`
+const SignInLinkStyles = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

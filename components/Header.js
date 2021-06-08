@@ -2,7 +2,6 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Cart from './Cart';
 import Nav from './Nav';
-import Search from './Search';
 import SearchBaseballCards from './SearchBaseballCards';
 import { useRouter } from 'next/router';
 
@@ -50,12 +49,10 @@ export default function Header() {
         <Nav />
       </div>
       <div className="sub-bar">
-            {currentPath === '/products' && (
-                <Search />
-            )}
-            {currentPath === '/baseballcards' && (
+     
+           
                 <SearchBaseballCards />
-            )}
+         
         </div>
       <Cart />
     </HeaderStyles>

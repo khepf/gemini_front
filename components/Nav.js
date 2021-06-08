@@ -11,12 +11,12 @@ export default function Nav() {
   const { openCart } = useCart();
   return (
     <NavStyles>
-      <Link href="/products">Products</Link>
       <Link href="/baseballcards">Cards</Link>
+      {user && user.role.name !== "Customer" && <><Link href="/inventory">Inventory</Link></>}
       {user && (
         <>
           <Link href="/orders">Orders</Link>
-          <Link href="/inventory">Inventory</Link>
+          
           
           <SignOut />
           <button type="button" onClick={openCart}>
@@ -24,13 +24,14 @@ export default function Nav() {
             <CartCount
               count={user.cart.reduce(
                 (tally, cartItem) =>
-                  tally + (cartItem.product ? cartItem.quantity : 0),
+                  tally + (cartItem.baseballcard ? cartItem.quantity : 0),
                 0
               )}
             />
           </button>
         </>
       )}
+      
       {!user && (
         <>
           <Link href="/signin">Sign In</Link>
