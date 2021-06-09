@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import styled from 'styled-components';
-import Cart from './Cart';
-import Nav from './Nav';
-import SearchBaseballCards from './SearchBaseballCards';
-import { useRouter } from 'next/router';
+import Link from "next/link";
+import styled from "styled-components";
+import Cart from "./Cart";
+import Nav from "./Nav";
+import SearchBaseballCards from "./SearchBaseballCards";
+import { useRouter } from "next/router";
 
 const LogoStyles = styled.h1`
   font-size: 4rem;
@@ -49,13 +49,8 @@ export default function Header() {
         <Nav />
       </div>
       <div className="sub-bar">
-     
-           
-      {currentPath === '/baseballcards' && (
-                <SearchBaseballCards />
-            )}
-         
-        </div>
+        {currentPath === "/baseballcards" && <SearchBaseballCards />}
+      </div>
       <Cart />
     </HeaderStyles>
   );

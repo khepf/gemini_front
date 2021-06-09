@@ -1,10 +1,11 @@
-import gql from 'graphql-tag';
-import { useMutation } from '@apollo/client';
-import Form, { FormCover } from './styles/Form';
-import useFormTemplateHook from '../lib/useFormTemplateHook';
-import Error from './ErrorMessage';
-import Link from 'next/link';
-import styled from 'styled-components';
+import gql from "graphql-tag";
+import { useMutation } from "@apollo/client";
+import Form, { FormCover } from "./styles/Form";
+import useFormTemplateHook from "../lib/useFormTemplateHook";
+import Error from "./ErrorMessage";
+import Link from "next/link";
+import styled from "styled-components";
+import { useForm } from "react-hook-form";
 
 const PasswordResetButtonStyles = styled.div`
   display: flex;
@@ -31,8 +32,14 @@ const REQUEST_RESET_MUTATION = gql`
 
 export default function RequestReset() {
   const { inputs, handleChange, resetForm } = useFormTemplateHook({
-    email: '',
+    email: "",
   });
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   const [signup, { data, loading, error }] = useMutation(
     REQUEST_RESET_MUTATION,
     {
@@ -41,43 +48,42 @@ export default function RequestReset() {
       // refetchQueries: [{ query: CURRENT_USER_QUERY }],
     }
   );
-  async function handleSubmit(e) {
-    e.preventDefault(); // stop the form from submitting
-    console.log(inputs);
+  async function handleSubmitForm(e) {
+    // e.preventDefault(); // stop the form from submitting
     const res = await signup().catch(console.error);
-    console.log(res);
-    console.log({ data, loading, error });
     resetForm();
     // Send the email and password to the graphqlAPI
   }
   return (
     <FormCover>
-    <Form method="POST" onSubmit={handleSubmit}>
-      <h2>Request a Password Reset</h2>
-      <Error error={error} />
-      <fieldset>
-        {data?.sendUserPasswordResetLink === null && (
-          <p>Success! Check your email for a link!</p>
-        )}
+      <Form method="POST" onSubmit={handleSubmit(handleSubmitForm)}>
+        <h2>Request a Password Reset</h2>
+        <Error error={error} />
+        <fieldset>
+          {data?.sendUserPasswordResetLink === null && (
+            <p>Success! Check your email for a link!</p>
+          )}
 
-        <label htmlFor="email">
-          Email
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email Address"
-            autoComplete="email"
-            value={inputs.email}
-            onChange={handleChange}
-          />
-        </label>
-        <PasswordResetButtonStyles>
-        {/* <Link href="/signup">Sign Up</Link> */}
-        <button type="submit">Password Reset!</button>
-        <Link href="/signin">Sign In</Link>
-        </PasswordResetButtonStyles>
-      </fieldset>
-    </Form>
+          <label htmlFor="email">
+            Email
+            <input
+              {...register("email", { required: true })}
+              type="email"
+              name="email"
+              placeholder="Your Email Address"
+              autoComplete="email"
+              value={inputs.email}
+              onChange={handleChange}
+            />
+            {errors.email && <span>Email is required</span>}
+          </label>
+          <PasswordResetButtonStyles>
+            {/* <Link href="/signup">Sign Up</Link> */}
+            <button type="submit">Password Reset!</button>
+            <Link href="/signin">Sign In</Link>
+          </PasswordResetButtonStyles>
+        </fieldset>
+      </Form>
     </FormCover>
   );
 }

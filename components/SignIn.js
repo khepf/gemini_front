@@ -42,12 +42,16 @@ const SIGNIN_MUTATION = gql`
 `;
 
 export default function SignIn() {
-
   const { inputs, handleChange, resetForm } = useFormTemplateHook({
     email: "",
     password: "",
   });
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   const [signin, { data, loading }] = useMutation(SIGNIN_MUTATION, {
     variables: inputs,
     // refectch the currently logged in user
@@ -78,7 +82,7 @@ export default function SignIn() {
           <label htmlFor="email">
             Email
             <input
-              {...register("email", {required: true})}
+              {...register("email", { required: true })}
               type="email"
               name="email"
               placeholder="Your Email Address"
@@ -88,11 +92,11 @@ export default function SignIn() {
             />
             {errors.email && <span>Email is required</span>}
           </label>
-          
+
           <label htmlFor="password">
             Password
             <input
-              {...register("password", {required: true})}
+              {...register("password", { required: true })}
               type="password"
               name="password"
               placeholder="Password"

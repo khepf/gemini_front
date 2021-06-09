@@ -11,12 +11,12 @@
 - DONE as seller need to only see items that the seller owns
 - DONE move edit and delete to proper place on baseball card
 - DONE comment out signup - fix css
+- DONE form validation
 
 - add more images
 - fill in more data
 
 - fix sign in failure workflow
-- form validation
 - add FE create in general
 - add ability to add both images to FE create
 - add ability to add both images to FE update

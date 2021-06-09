@@ -54,7 +54,6 @@ function Table({ columns, data }) {
         useSortBy
     )
     // Render the UI for the table
-    console.log(rows)
     return (
         <div>
             <table className="table" {...getTableProps()}>
