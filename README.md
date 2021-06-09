@@ -1,21 +1,26 @@
-DONE wire up fe for dynamic product pages
-DONE right now if no image on baseball card page, it breaks\
-DONE fix search area in ui
-DONE need inventory page on front end
-DONE create testcustomer, testseller users and assign/create roles accordingly
-DONE fix roles
-DONE fix redirects for when not signed in
-DONE need notSelling isSelling isSold flag
-DONE hide inventory from customer
-DONE need to not be able to see inventory is role is customer
-DONE as seller need to only see items that the seller owns
-DONE move edit and delete to proper place on baseball card
-DONE comment out signup - fix css
-add more images
-fill in more data
-form validation
-add ability to add both images to FE create
-add ability to add both images to FE update
+- DONE wire up fe for dynamic product pages
+- DONE right now if no image on baseball card page, it breaks\
+- DONE fix search area in ui
+- DONE need inventory page on front end
+- DONE create testcustomer, testseller users and assign/create roles accordingly
+- DONE fix roles
+- DONE fix redirects for when not signed in
+- DONE need notSelling isSelling isSold flag
+- DONE hide inventory from customer
+- DONE need to not be able to see inventory is role is customer
+- DONE as seller need to only see items that the seller owns
+- DONE move edit and delete to proper place on baseball card
+- DONE comment out signup - fix css
+
+- add more images
+- fill in more data
+
+- fix sign in failure workflow
+- form validation
+- add FE create in general
+- add ability to add both images to FE create
+- add ability to add both images to FE update
+- image delete when card deleted or updated
 
 
 

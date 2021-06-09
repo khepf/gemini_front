@@ -41,6 +41,7 @@ const SIGNIN_MUTATION = gql`
 `;
 
 export default function SignIn() {
+
   const { inputs, handleChange, resetForm } = useForm({
     email: "",
     password: "",
@@ -50,6 +51,7 @@ export default function SignIn() {
     // refectch the currently logged in user
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
+
   async function handleSubmit(e) {
     e.preventDefault(); // stop the form from submitting
     const res = await signin();
@@ -80,6 +82,7 @@ export default function SignIn() {
               autoComplete="email"
               value={inputs.email}
               onChange={handleChange}
+              required
             />
           </label>
           <label htmlFor="password">
@@ -91,6 +94,7 @@ export default function SignIn() {
               autoComplete="password"
               value={inputs.password}
               onChange={handleChange}
+              required
             />
           </label>
           <SignInButtonStyles>

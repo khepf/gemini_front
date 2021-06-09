@@ -96,7 +96,23 @@ export default function UpdateBaseballCard({ id }) {
   ] = useMutation(UPDATE_BASEBALL_CARD_MUTATION);
   // 2.5 Create some state for the form inputs:
   const { inputs, handleChange, clearForm, resetForm } = useForm(
-    data?.BaseballCard
+    // data?.BaseballCard
+    {
+      firstName: data?.BaseballCard.firstName ? data.BaseballCard.firstName : "",
+      lastName: data?.BaseballCard.lastName ? data.BaseballCard.lastName : "",
+      year: data?.BaseballCard.year ? data.BaseballCard.year : "",
+      brand: data?.BaseballCard.brand ? data.BaseballCard.brand : "",
+      card_Number: data?.BaseballCard.card_Number ? data.BaseballCard.card_Number : "",
+      condition: data?.BaseballCard.condition ? data.BaseballCard.condition : "",
+      description: data?.BaseballCard.description ? data.BaseballCard.description : "",
+      buyPrice: data?.BaseballCard.buyPrice ? data.BaseballCard.buyPrice : 0,
+      buyDate: data?.BaseballCard.buyDate ? data.BaseballCard.buyDate : "",
+      sellingPrice: data?.BaseballCard.sellingPrice ? data.BaseballCard.sellingPrice : 0,
+      sellingDate: data?.BaseballCard.sellingDate ? data.BaseballCard.sellingDate : "",
+      soldPrice: data?.BaseballCard.soldPrice ? data.BaseballCard.soldPrice : 0,
+      soldDate: data?.BaseballCard.soldDate ? data.BaseballCard.soldDate : "",
+      inventoryStatus: data?.BaseballCard.inventoryStatus ? data.BaseballCard.inventoryStatus : ""
+    }
   );
   console.log(inputs);
   if (loading) return <p>loading...</p>;
