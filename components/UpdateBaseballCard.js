@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import gql from "graphql-tag";
-import useForm from "../lib/useForm";
+import useFormTemplateHook from "../lib/useFormTemplateHook";
 import DisplayError from "./ErrorMessage";
 import FormStyles from "./styles/Form";
 import Router from "next/router";
@@ -95,7 +95,7 @@ export default function UpdateBaseballCard({ id }) {
     { data: updateData, error: updateError, loading: updateLoading },
   ] = useMutation(UPDATE_BASEBALL_CARD_MUTATION);
   // 2.5 Create some state for the form inputs:
-  const { inputs, handleChange, clearForm, resetForm } = useForm(
+  const { inputs, handleChange, clearForm, resetForm } = useFormTemplateHook(
     // data?.BaseballCard
     {
       firstName: data?.BaseballCard.firstName ? data.BaseballCard.firstName : "",

@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import Form, { FormCover } from './styles/Form';
-import useForm from '../lib/useForm';
+import useFormTemplateHook from '../lib/useFormTemplateHook';
 import Error from './ErrorMessage';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -30,7 +30,7 @@ const REQUEST_RESET_MUTATION = gql`
 `;
 
 export default function RequestReset() {
-  const { inputs, handleChange, resetForm } = useForm({
+  const { inputs, handleChange, resetForm } = useFormTemplateHook({
     email: '',
   });
   const [signup, { data, loading, error }] = useMutation(

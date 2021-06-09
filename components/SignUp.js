@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import Form,  { FormCover } from './styles/Form';
-import useForm from '../lib/useForm';
+import useFormTemplateHook from '../lib/useFormTemplateHook';
 import { CURRENT_USER_QUERY } from './User';
 import Error from './ErrorMessage';
 import Link from 'next/link';
@@ -38,7 +38,7 @@ const SIGNUP_MUTATION = gql`
 `;
 
 export default function SignUp() {
-  const { inputs, handleChange, resetForm } = useForm({
+  const { inputs, handleChange, resetForm } = useFormTemplateHook({
     email: '',
     name: '',
     password: '',

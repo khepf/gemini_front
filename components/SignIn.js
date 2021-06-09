@@ -1,12 +1,13 @@
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/client";
 import Form, { FormCover } from "./styles/Form";
-import useForm from "../lib/useForm";
+import useFormTemplateHook from "../lib/useFormTemplateHook";
 import { CURRENT_USER_QUERY } from "./User";
 import Error from "./ErrorMessage";
 import Router from "next/router";
 import Link from "next/link";
 import styled from "styled-components";
+import { useForm } from "react-hook-form";
 
 const SignInButtonStyles = styled.div`
   display: flex;
@@ -42,18 +43,19 @@ const SIGNIN_MUTATION = gql`
 
 export default function SignIn() {
 
-  const { inputs, handleChange, resetForm } = useForm({
+  const { inputs, handleChange, resetForm } = useFormTemplateHook({
     email: "",
     password: "",
   });
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [signin, { data, loading }] = useMutation(SIGNIN_MUTATION, {
     variables: inputs,
     // refectch the currently logged in user
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
 
-  async function handleSubmit(e) {
-    e.preventDefault(); // stop the form from submitting
+  async function handleSubmitForm(e) {
+    //e.preventDefault();
     const res = await signin();
     resetForm();
     Router.push({
@@ -69,33 +71,36 @@ export default function SignIn() {
       : undefined;
   return (
     <FormCover>
-      <Form method="POST" onSubmit={handleSubmit}>
+      <Form method="POST" onSubmit={handleSubmit(handleSubmitForm)}>
         <h2>Sign In to Your Account</h2>
         <Error error={error} />
         <fieldset>
           <label htmlFor="email">
             Email
             <input
+              {...register("email", {required: true})}
               type="email"
               name="email"
               placeholder="Your Email Address"
               autoComplete="email"
               value={inputs.email}
               onChange={handleChange}
-              required
             />
+            {errors.email && <span>Email is required</span>}
           </label>
+          
           <label htmlFor="password">
             Password
             <input
+              {...register("password", {required: true})}
               type="password"
               name="password"
               placeholder="Password"
               autoComplete="password"
               value={inputs.password}
               onChange={handleChange}
-              required
             />
+            {errors.password && <span>Password is required</span>}
           </label>
           <SignInButtonStyles>
             {/* <Link href="/signup">Sign Up</Link> */}

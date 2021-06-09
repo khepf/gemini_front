@@ -51,7 +51,9 @@ export default function Header() {
       <div className="sub-bar">
      
            
+      {currentPath === '/baseballcards' && (
                 <SearchBaseballCards />
+            )}
          
         </div>
       <Cart />
