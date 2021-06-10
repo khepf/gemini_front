@@ -22,7 +22,7 @@
 - fix sign in failure workflow
 - add validation to create baseball card
 - image delete when card deleted or updated
-
+- back end isolate image folder in cloudinary to user somehow (variables?)
 
 
 ----------MVP--------------------
