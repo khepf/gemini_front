@@ -9,6 +9,7 @@ import { inventoryPerPage } from '../config';
 import { useTable, useSortBy } from 'react-table'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components';
+import CreateBaseballCardButton from './CreatBaseballCardButton';
 
 
 export const ALL_BASEBALL_CARDS_QUERY = gql`
@@ -55,6 +56,8 @@ function Table({ columns, data }) {
     )
     // Render the UI for the table
     return (
+        <>
+        <div><CreateBaseballCardButton /></div>
         <div>
             <table className="table" {...getTableProps()}>
                 <thead>
@@ -98,6 +101,7 @@ function Table({ columns, data }) {
             </table>
             <br />
         </div >
+        </>
     )
 }
 

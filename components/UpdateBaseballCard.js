@@ -160,7 +160,6 @@ export default function UpdateBaseballCard({ id }) {
     Router.push({
       pathname: `/baseballcard/${id}`,
     });
-    // Send the email and password to the graphqlAPI
   }
   if (loading) return <p>loading...</p>;
   // 3. We need the form to handle the updates

@@ -1,10 +1,10 @@
-import CreateProduct from "../components/CreateProduct";
+import CreateBaseballCard from "../components/CreateBaseballCard";
 import PleaseSignIn from "../components/PleaseSignIn";
 
 export default function SellPage() {
   return (<div>
     <PleaseSignIn>
-    <CreateProduct />
+    <CreateBaseballCard />
     </PleaseSignIn>
   </div>
   )

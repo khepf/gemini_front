@@ -12,14 +12,15 @@
 - DONE move edit and delete to proper place on baseball card
 - DONE comment out signup - fix css
 - DONE form validation
+- DONE add FE create in general
+- DONE add ability to add both images to FE create
+- DONE add ability to add both images to FE update
 
 - add more images
 - fill in more data
 
 - fix sign in failure workflow
-- add FE create in general
-- add ability to add both images to FE create
-- add ability to add both images to FE update
+- add validation to create baseball card
 - image delete when card deleted or updated
 
 
