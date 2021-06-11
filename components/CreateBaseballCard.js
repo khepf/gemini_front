@@ -4,7 +4,8 @@ import Router from "next/router";
 import useFormTemplateHook from "../lib/useFormTemplateHook";
 import DisplayError from "./ErrorMessage";
 import { ALL_BASEBALL_CARDS_QUERY } from "./BaseballCards";
-import Form from "./styles/Form";
+import FormStyles from "./styles/Form";
+import { useForm } from "react-hook-form";
 
 const CREATE_BASEBALL_CARD_MUTATION = gql`
   mutation CREATE_BASEBALL_CARD_MUTATION(
@@ -67,19 +68,27 @@ export default function CreateBaseballCard() {
       refetchQueries: [{ query: ALL_BASEBALL_CARDS_QUERY }],
     }
   );
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  async function handleSubmitForm(e) {
+    // e.preventDefault(); // stop the form from submitting
+    const res = await createBaseballCard().catch(console.error);
+    clearForm();
+    Router.push({
+      pathname: `/baseballcard/${res.data.createBaseballCard.id}`,
+    });
+  }
+  if (loading) return <p>loading...</p>;
   return (
     <>
-      <Form
-        onSubmit={async (e) => {
-          e.preventDefault();
-          // Submit the inputfields to the backend:
-          const res = await createBaseballCard();
-          clearForm();
-          // Go to that product's page!
-          Router.push({
-            pathname: `/baseballcard/${res.data.createBaseballCard.id}`,
-          });
-        }}
+      <FormStyles
+        onSubmit={handleSubmit(handleSubmitForm)}
       >
         <DisplayError error={error} />
         <fieldset disabled={loading} aria-busy={loading}>
@@ -194,7 +203,7 @@ export default function CreateBaseballCard() {
 
           <button type="submit">+ Save Baseball Card</button>
         </fieldset>
-      </Form>
+      </FormStyles>
     </>
   );
 }

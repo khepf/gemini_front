@@ -23,6 +23,8 @@
 - add validation to create baseball card
 - image delete when card deleted or updated
 - back end isolate image folder in cloudinary to user somehow (variables?)
+- upload FE to cloud
+- upload BE to cloud
 
 
 ----------MVP--------------------
