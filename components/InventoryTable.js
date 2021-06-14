@@ -57,7 +57,7 @@ function Table({ columns, data }) {
     // Render the UI for the table
     return (
         <>
-        <div><CreateBaseballCardButton /></div>
+        
         <div>
             <table className="table" {...getTableProps()}>
                 <thead>

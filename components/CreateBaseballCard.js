@@ -81,7 +81,8 @@ export default function CreateBaseballCard() {
     const res = await createBaseballCard().catch(console.error);
     clearForm();
     Router.push({
-      pathname: `/baseballcard/${res.data.createBaseballCard.id}`,
+      // pathname: `/baseballcard/${res.data.createBaseballCard.id}`,
+      pathname: `/inventory`
     });
   }
   if (loading) return <p>loading...</p>;
@@ -95,21 +96,21 @@ export default function CreateBaseballCard() {
           <label htmlFor="image1">
             Front Image
             <input
-              required
               type="file"
               id="image1"
               name="image1"
               onChange={handleChange}
+              required
             />
           </label>
           <label htmlFor="image2">
             Back Image
             <input
-              required
               type="file"
               id="image2"
               name="image2"
               onChange={handleChange}
+              required
             />
           </label>
           <label htmlFor="firstName">
@@ -121,6 +122,7 @@ export default function CreateBaseballCard() {
               placeholder="First Name"
               value={inputs.firstName}
               onChange={handleChange}
+              required
             />
           </label>
           <label htmlFor="lastName">
@@ -132,6 +134,7 @@ export default function CreateBaseballCard() {
               placeholder="Last Name"
               value={inputs.lastName}
               onChange={handleChange}
+              required
             />
           </label>
           <label htmlFor="year">
@@ -143,6 +146,7 @@ export default function CreateBaseballCard() {
               placeholder="Year"
               value={inputs.year}
               onChange={handleChange}
+              required
             />
           </label>
           <label htmlFor="brand">
@@ -154,6 +158,7 @@ export default function CreateBaseballCard() {
               placeholder="Brand"
               value={inputs.brand}
               onChange={handleChange}
+              required
             />
           </label>
           <label htmlFor="card_Number">
@@ -165,6 +170,7 @@ export default function CreateBaseballCard() {
               placeholder="Card Number"
               value={inputs.card_Number}
               onChange={handleChange}
+              required
             />
           </label>
 
@@ -177,6 +183,7 @@ export default function CreateBaseballCard() {
               placeholder="Condition"
               value={inputs.condition}
               onChange={handleChange}
+              required
             />
           </label>
           <label htmlFor="sellingPrice">
