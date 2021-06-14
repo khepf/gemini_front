@@ -111,7 +111,7 @@
               "pure": true,
               "displayName": true,
               "preprocess": false
-            }
+            }, "warning fix"
           ]
         ]
       },
