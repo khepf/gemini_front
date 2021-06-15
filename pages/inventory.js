@@ -2,6 +2,7 @@ import CreateBaseballCardButton from "../components/CreatBaseballCardButton";
 
 import { useUser } from '../components/User';
 import PleaseSignIn from "../components/PleaseSignIn";
+import FullInventory from "../components/FullInventory";
 
 
 export default function InventoryPage() {
@@ -12,12 +13,14 @@ export default function InventoryPage() {
        <>
       <div><CreateBaseballCardButton /></div>
       <h4>Hello Admin</h4>
+      <FullInventory />
       </>
      )}
      {user && user.role.name == "Seller"  && (
        <>
        <div><CreateBaseballCardButton /></div>
        <h4>Hello Seller</h4>
+       <FullInventory />
       </>
      )}
      {!user && (
