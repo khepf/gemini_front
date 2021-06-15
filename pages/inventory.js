@@ -1,6 +1,7 @@
 import CreateBaseballCardButton from "../components/CreatBaseballCardButton";
 import InventoryTable from "../components/InventoryTable";
 import { useUser } from '../components/User';
+import PleaseSignIn from "../components/PleaseSignIn";
 
 
 export default function InventoryPage() {
@@ -22,7 +23,8 @@ export default function InventoryPage() {
      )} */}
      {/* <CreateBaseballCardButton /> */}
      {/* <InventoryTable /> */}
-<h4>helllo inventory page</h4>
+     <PleaseSignIn><h4>helllo inventory page</h4></PleaseSignIn>
+
   </div>
   )
 }
