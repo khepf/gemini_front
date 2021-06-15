@@ -12,7 +12,7 @@ export default function Nav() {
   return (
     <NavStyles>
       <Link href="/baseballcards">Cards</Link>
-      {user && user.role.name !== "Customer" && <><Link href="/inventory">Inventory</Link></>}
+      {user && user.role.name !== "Customer" && (<><Link href="/inventory">Inventory</Link></>)}
       {user && (
         <>
           <Link href="/orders">Orders</Link>

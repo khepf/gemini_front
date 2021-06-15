@@ -32,6 +32,8 @@ cart expiration
 research and finish search 
 add zoom in on image feature?
 crop image in app?
+5 dollar 55's page
+
 
 
 think about the workflow
