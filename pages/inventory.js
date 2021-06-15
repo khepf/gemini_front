@@ -5,6 +5,7 @@ import PleaseSignIn from "../components/PleaseSignIn";
 
 
 export default function InventoryPage() {
+    const user = useUser();
     return (<div>
      {user && user.role.name == "Admin"  && (
        <>
