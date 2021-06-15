@@ -23,7 +23,7 @@ export default function InventoryPage() {
        <h5>You do not have access to this page, silly goose.</h5>
      )} */}
      <CreateBaseballCardButton />
-     <InventoryTable />
+     {/* <InventoryTable /> */}
 
   </div>
   )
