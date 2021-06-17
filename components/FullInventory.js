@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 import { perPage } from '../config';
+import InventoryItem from './InventoryItem'
 
 export const ALL_BASEBALL_CARDS_QUERY = gql`
   query ALL_BASEBALL_CARDS_QUERY($skip: Int = 0, $first: Int) {
@@ -37,7 +38,7 @@ export default function FullInventory({ page }) {
       <div>
         <FullInventoryStyles>
           {data.allBaseballCards.map((baseballcard) => (
-            <h4>{baseballcard.firstName}</h4>
+            <InventoryItem key={baseballcard.id} baseballcard={baseballcard}/>
           ))}
         </FullInventoryStyles>
       </div>
