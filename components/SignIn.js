@@ -3,7 +3,7 @@ import { useMutation } from "@apollo/client";
 import Form, { FormCover } from "./styles/Form";
 import useFormTemplateHook from "../lib/useFormTemplateHook";
 import { CURRENT_USER_QUERY } from "./User";
-import Error from "./ErrorMessage";
+import ErrorMessage from "./ErrorMessage";
 import Router from "next/router";
 import Link from "next/link";
 import styled from "styled-components";
@@ -62,11 +62,13 @@ export default function SignIn() {
     //e.preventDefault();
     const res = await signin();
     resetForm();
-    Router.push({
-      pathname: `/baseballcards`,
-    });
-
-    // Send the email and password to the graphqlAPI
+    console.log('res!!!', res);
+    if (res.data.authenticateUserWithPassword.item) {
+      Router.push({
+        pathname: `/baseballcards`,
+      });
+    }
+    
   }
   const error =
     data?.authenticateUserWithPassword.__typename ===
@@ -77,7 +79,7 @@ export default function SignIn() {
     <FormCover>
       <Form method="POST" onSubmit={handleSubmit(handleSubmitForm)}>
         <h2>Sign In to Your Account</h2>
-        <Error error={error} />
+        <ErrorMessage error={error} />
         <fieldset>
           <label htmlFor="email">
             Email

@@ -18,14 +18,16 @@
 - DONE add validation to create baseball card
 - DONE upload FE to cloud
 - DONE upload BE to cloud
+- DONE fix delete button
 
 - add more images
 - fill in more data
 
+- fix centering in all forms
 - fix sign in failure workflow
 - image delete when card deleted or updated
 - back end isolate image folder in cloudinary to user somehow (variables?)
-- fix delete button
+- integrate Cypress for testing
 
 
 
