@@ -35,9 +35,11 @@ const FullInventoryStyles = styled.section`
   width: 100%;
   > * {
     display: table-row;
+    
   }
   .col {
     display: table-cell;
+    border-right: 5px solid white !important;
     
   }
 `;

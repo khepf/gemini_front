@@ -1,6 +1,6 @@
 import { useUser } from "./User";
-import styled from "styled-components";
 import Link from "next/link";
+import formatMoney from '../lib/formatMoney';
 
 
 
@@ -40,19 +40,19 @@ export default function InventoryItem({ baseballcard }) {
             {baseballcard.condition}
             </div>
             <div className="col">
-            {baseballcard.buyPrice}
+            {formatMoney(baseballcard.buyPrice)}
             </div>
             <div className="col">
             {baseballcard.buyDate}
             </div>
             <div className="col">
-            {baseballcard.sellingPrice}
+            {formatMoney(baseballcard.sellingPrice)}
             </div>
             <div className="col">
             {baseballcard.sellingDate}
             </div>
             <div className="col">
-            {baseballcard.soldPrice}
+            {formatMoney(baseballcard.soldPrice)}
             </div>
             <div className="col">
             {baseballcard.soldDate}
