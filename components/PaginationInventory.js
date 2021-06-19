@@ -25,14 +25,14 @@ export default function PaginationInventory({ page }) {
       <Head>
         <title>Gemini - Page {page} of {pageCount}</title>
       </Head>
-      <Link href={`/account/${page - 1}`}>
+      <Link href={`/inventory/${page - 1}`}>
         <a aria-disabled={page <= 1}>← Prev</a>
       </Link>
       <p>
         Page {page} of {pageCount}
       </p>
       <p>{count} Items Total</p>
-      <Link href={`/account/${page + 1}`}>
+      <Link href={`/inventory/${page + 1}`}>
         <a aria-disabled={page >= pageCount}>Next →</a>
       </Link>
     </PaginationStyles>

@@ -8,7 +8,7 @@ import { perPage } from '../config';
 
 export const PAGINATION_QUERY = gql`
   query PAGINATION_QUERY {
-    _allBaseballCardsMeta {
+    _allBaseballCardsMeta(where: {inventoryStatus: "selling"}) {
       count
     }
   }

@@ -30,16 +30,7 @@ export default function BaseballCard({ baseballcard }) {
       <PriceTag>{formatMoney(baseballcard.sellingPrice)}</PriceTag>
       <p>{baseballcard.description}</p>
       <div className="buttonList">
-        {/* <Link
-          href={{
-            pathname: '/update',
-            query: {
-              id: baseballcard.id,
-            },
-          }}
-        >
-          Edit ✏️
-        </Link> */}
+        
         {user && <AddToCart id={baseballcard.id} />}
         {!user && (
         <SignInLinkStyles>
