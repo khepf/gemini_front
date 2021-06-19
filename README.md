@@ -29,6 +29,8 @@
 - back end isolate image folder in cloudinary to user somehow (variables?)
 - integrate Cypress for testing
 - build admin component for inventory page
+- add google ads
+- add cursors where they belong
 
 
 
