@@ -6,6 +6,13 @@ import FormStyles from "./styles/Form";
 import Router from "next/router";
 import DeleteBaseballCard from "./DeleteBaseballCard";
 import { useForm } from "react-hook-form";
+import styled from "styled-components";
+
+const ButtonRowStyles = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const SINGLE_BASEBALL_CARD_QUERY = gql`
   query SINGLE_BASEBALL_CARD_QUERY($id: ID!) {
@@ -96,39 +103,32 @@ export default function UpdateBaseballCard({ id }) {
     { data: updateData, error: updateError, loading: updateLoading },
   ] = useMutation(UPDATE_BASEBALL_CARD_MUTATION);
   // 2.5 Create some state for the form inputs:
-  const { inputs, handleChange, clearForm, resetForm } = useFormTemplateHook(
-    // data?.BaseballCard
-    {
-      firstName: data?.BaseballCard.firstName
-        ? data.BaseballCard.firstName
-        : "",
-      lastName: data?.BaseballCard.lastName ? data.BaseballCard.lastName : "",
-      year: data?.BaseballCard.year ? data.BaseballCard.year : "",
-      brand: data?.BaseballCard.brand ? data.BaseballCard.brand : "",
-      card_Number: data?.BaseballCard.card_Number
-        ? data.BaseballCard.card_Number
-        : "",
-      condition: data?.BaseballCard.condition
-        ? data.BaseballCard.condition
-        : "",
-      description: data?.BaseballCard.description
-        ? data.BaseballCard.description
-        : "",
-      buyPrice: data?.BaseballCard.buyPrice ? data.BaseballCard.buyPrice : 0,
-      buyDate: data?.BaseballCard.buyDate ? data.BaseballCard.buyDate : "",
-      sellingPrice: data?.BaseballCard.sellingPrice
-        ? data.BaseballCard.sellingPrice
-        : 0,
-      sellingDate: data?.BaseballCard.sellingDate
-        ? data.BaseballCard.sellingDate
-        : "",
-      soldPrice: data?.BaseballCard.soldPrice ? data.BaseballCard.soldPrice : 0,
-      soldDate: data?.BaseballCard.soldDate ? data.BaseballCard.soldDate : "",
-      inventoryStatus: data?.BaseballCard.inventoryStatus
-        ? data.BaseballCard.inventoryStatus
-        : "",
-    }
-  );
+  const { inputs, handleChange, clearForm, resetForm } = useFormTemplateHook({
+    firstName: data?.BaseballCard.firstName ? data.BaseballCard.firstName : "",
+    lastName: data?.BaseballCard.lastName ? data.BaseballCard.lastName : "",
+    year: data?.BaseballCard.year ? data.BaseballCard.year : "",
+    brand: data?.BaseballCard.brand ? data.BaseballCard.brand : "",
+    card_Number: data?.BaseballCard.card_Number
+      ? data.BaseballCard.card_Number
+      : "",
+    condition: data?.BaseballCard.condition ? data.BaseballCard.condition : "",
+    description: data?.BaseballCard.description
+      ? data.BaseballCard.description
+      : "",
+    buyPrice: data?.BaseballCard.buyPrice ? data.BaseballCard.buyPrice : 0,
+    buyDate: data?.BaseballCard.buyDate ? data.BaseballCard.buyDate : "",
+    sellingPrice: data?.BaseballCard.sellingPrice
+      ? data.BaseballCard.sellingPrice
+      : 0,
+    sellingDate: data?.BaseballCard.sellingDate
+      ? data.BaseballCard.sellingDate
+      : "",
+    soldPrice: data?.BaseballCard.soldPrice ? data.BaseballCard.soldPrice : 0,
+    soldDate: data?.BaseballCard.soldDate ? data.BaseballCard.soldDate : "",
+    inventoryStatus: data?.BaseballCard.inventoryStatus
+      ? data.BaseballCard.inventoryStatus
+      : "",
+  });
   const {
     register,
     handleSubmit,
@@ -330,10 +330,13 @@ export default function UpdateBaseballCard({ id }) {
               <option value="sold">Sold</option>
             </select>
           </label>
-          <button type="submit">Update Baseball Card</button>
+
+          <ButtonRowStyles>
+            <button type="submit">Update</button>
+            <DeleteBaseballCard id={id}>Delete</DeleteBaseballCard>
+          </ButtonRowStyles>
         </fieldset>
       </FormStyles>
-      <DeleteBaseballCard id={id}>Delete</DeleteBaseballCard>
     </>
   );
 }

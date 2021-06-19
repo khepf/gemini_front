@@ -16,6 +16,8 @@
 - DONE add ability to add both images to FE create
 - DONE add ability to add both images to FE update
 - DONE add validation to create baseball card
+- DONE upload FE to cloud
+- DONE upload BE to cloud
 
 - add more images
 - fill in more data
@@ -23,8 +25,9 @@
 - fix sign in failure workflow
 - image delete when card deleted or updated
 - back end isolate image folder in cloudinary to user somehow (variables?)
-- upload FE to cloud
-- upload BE to cloud
+- fix delete button
+
+
 
 
 ----------MVP--------------------
