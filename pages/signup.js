@@ -12,7 +12,8 @@ const GridStyles = styled.div`
 export default function SignInPage() {
   return (
     <GridStyles>
-      <SignUp />
+      Coming soon
+      {/* <SignUp /> */}
     </GridStyles>
   );
 }
