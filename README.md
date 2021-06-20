@@ -19,12 +19,12 @@
 - DONE upload FE to cloud
 - DONE upload BE to cloud
 - DONE fix delete button
+- DONE fix sign in failure workflow
 
 - add more images
 - fill in more data
 
-- fix centering in all forms
-- fix sign in failure workflow
+- fix centering in update and create forms
 - image delete when card deleted or updated
 - back end isolate image folder in cloudinary to user somehow (variables?)
 - integrate Cypress for testing
@@ -32,10 +32,6 @@
 - add google ads
 - add cursors where they belong
 
-
-
-
-----------MVP--------------------
 cart expiration
 research and finish search 
 add zoom in on image feature?

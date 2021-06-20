@@ -2,11 +2,82 @@ import { useMutation, useQuery } from "@apollo/client";
 import gql from "graphql-tag";
 import useFormTemplateHook from "../lib/useFormTemplateHook";
 import DisplayError from "./ErrorMessage";
-import FormStyles from "./styles/Form";
 import Router from "next/router";
 import DeleteBaseballCard from "./DeleteBaseballCard";
 import { useForm } from "react-hook-form";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const loading = keyframes`
+  from {
+    background-position: 0 0;
+    /* rotate: 0; */
+  }
+
+  to {
+    background-position: 100% 100%;
+    /* rotate: 360deg; */
+  }
+`;
+
+const UpdateFormStyles = styled.form`
+  max-width: 800px;
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.02);
+  border: 5px solid white;
+  padding: 20px;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-weight: 600;
+  label {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid black;
+    &:focus {
+      outline: 0;
+      border-color: darkBlue;
+    }
+  }
+  button,
+  input[type="submit"] {
+    width: auto;
+    background: darkBlue;
+    color: white;
+    border: 0;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 0.5rem 1.2rem;
+  }
+  fieldset {
+    border: 0;
+    padding: 0;
+
+    &[disabled] {
+      opacity: 0.5;
+    }
+    &::before {
+      height: 10px;
+      content: "";
+      display: block;
+      background-image: linear-gradient(
+        to right,
+        #add8e6 0%,
+        #0000ff 50%,
+        #0047ab 100%
+      );
+    }
+    &[aria-busy="true"]::before {
+      background-size: 50% auto;
+      animation: ${loading} 0.5s linear infinite;
+    }
+  }
+`;
 
 const ButtonRowStyles = styled.div`
   display: flex;
@@ -136,7 +207,6 @@ export default function UpdateBaseballCard({ id }) {
     formState: { errors },
   } = useForm();
   async function handleSubmitForm(e) {
-    // e.preventDefault(); // stop the form from submitting
     const res = await updateBaseballCard({
       variables: {
         id,
@@ -165,7 +235,7 @@ export default function UpdateBaseballCard({ id }) {
   // 3. We need the form to handle the updates
   return (
     <>
-      <FormStyles onSubmit={handleSubmit(handleSubmitForm)}>
+      <UpdateFormStyles onSubmit={handleSubmit(handleSubmitForm)}>
         <DisplayError error={error || updateError} />
         <fieldset disabled={updateLoading} aria-busy={updateLoading}>
           <label htmlFor="firstName">
@@ -336,7 +406,7 @@ export default function UpdateBaseballCard({ id }) {
             <DeleteBaseballCard id={id}>Delete</DeleteBaseballCard>
           </ButtonRowStyles>
         </fieldset>
-      </FormStyles>
+      </UpdateFormStyles>
     </>
   );
 }

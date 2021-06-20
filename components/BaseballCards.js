@@ -25,8 +25,13 @@ export const ALL_BASEBALL_CARDS_QUERY = gql`
 
 const BaseballCardsListStyles = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 60px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 40px;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; */
+  
 `;
 
 export default function BaseballCards({ page }) {

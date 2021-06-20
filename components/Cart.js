@@ -35,9 +35,9 @@ function CartItem({ cartItem }) {
         alt={baseballcard.firstName}
       />
       <div>
-        <h3>{baseballcard.firstName}</h3>
+        <h3>{baseballcard.firstName}</h3> <h3>{baseballcard.lastName}</h3>
         <p>
-          {formatMoney(baseballcard.price * cartItem.quantity)}-
+          {formatMoney(baseballcard.sellingPrice * cartItem.quantity)}-
           <em>
             {cartItem.quantity} &times; {formatMoney(baseballcard.sellingPrice)} each
           </em>
