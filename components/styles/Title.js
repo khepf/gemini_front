@@ -9,11 +9,13 @@ const Title = styled.h3`
   a {
     background: darkBlue;
     display: inline;
+    float: left;
     line-height: 1.3;
-    font-size: 3rem;
+    font-size: 2rem;
     text-align: center;
     color: white;
-    padding: 0 1rem;
+    padding: 0 .5rem;
+    margin: .5rem;
   }
 `;
 

@@ -10,6 +10,8 @@ export const ALL_BASEBALL_CARDS_QUERY = gql`
       id
       firstName
       lastName
+      year
+      brand
       description
       sellingPrice
       inventoryStatus
@@ -25,7 +27,8 @@ export const ALL_BASEBALL_CARDS_QUERY = gql`
 
 const BaseballCardsListStyles = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* grid-template-columns: repeat(3, minmax(0, 1fr)); */
+  grid-template-columns: repeat(auto-fill, minmax(min(200px,100%), 1fr));
   grid-gap: 40px;
   /* display: flex;
   justify-content: center;
