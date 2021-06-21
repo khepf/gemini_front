@@ -26,6 +26,7 @@ export default function BaseballCard({ baseballcard }) {
       <Title>
     
        
+        <Link href={`/baseballcard/${baseballcard.id}`}>{baseballcard.year.toString()}</Link>
         <Link href={`/baseballcard/${baseballcard.id}`}>{baseballcard.brand}</Link>
         <Link href={`/baseballcard/${baseballcard.id}`}>{baseballcard.firstName}</Link>
         <Link href={`/baseballcard/${baseballcard.id}`}>{baseballcard.lastName}</Link>
